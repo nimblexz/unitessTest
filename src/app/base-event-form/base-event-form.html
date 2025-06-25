@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="setData()" class="form">
+  <mat-form-field>
+    <mat-label>Название</mat-label>
+    <input formControlName="name" matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Описание</mat-label>
+    <input formControlName="description" matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Место проведения</mat-label>
+    <input formControlName="location" matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Тип</mat-label>
+    <mat-select (selectionChange)="setFormField()" formControlName="type">
+      <mat-option [value]="'Спортивное'">Спортивное</mat-option>
+      <mat-option [value]="'Музыкальное'">Музыкальное</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="form.get('numberOfParticipants')">
+    <mat-label>Количество участников</mat-label>
+    <input formControlName="numberOfParticipants" matInput>
+  </mat-form-field>
+  <mat-form-field *ngIf="form.get('genreOfMusic')">
+    <mat-label>Жанр музыки</mat-label>
+    <input formControlName="genreOfMusic" matInput>
+  </mat-form-field>
+  <button [color]="'primary'" type="submit" mat-raised-button>Сохранить</button>
+</form>
